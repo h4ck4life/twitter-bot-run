@@ -11,16 +11,16 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>appassembler-maven-plugin</artifactId>
-                <version>1.9</version>
+                <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
-                    <programs>
-                        <program>
-                            <mainClass>com.mycompany.app.App</mainClass>
-                            <id>app</id>
-                        </program>
-                    </programs>
+                    <archive>
+                        <manifest>
+                            <mainClass>fully.qualified.MainClass</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
                 </configuration>
             </plugin>
         </plugins>
