@@ -32,6 +32,13 @@ public class OrangMulaTerbang {
             "present for him",
             "i want new bag"};
 
+    private static String replies[] = {
+            " make a surprise, get a nice bag as a present for him, buy it here > ",
+            " make him happy by getting a present. He might like this > ",
+            " he probably loves this nice bag > ",
+            " nice leather bag for him. Make him smile. Buy it here > "
+    };
+
     public static void main(String[] args) throws IOException, TwitterException, de.malkusch.amazon.ecs.exception.RequestException {
 
         AMAZON_API = configureAmazonAPI();
@@ -55,7 +62,7 @@ public class OrangMulaTerbang {
 
 
         Status sts = result.getTweets().get(rnd.nextInt(result.getTweets().size()));
-        String stats = "@" + sts.getUser().getScreenName() + " Nice bag as a present for him, buy it here > " + selectItem.getDetailPageURL() ;
+        String stats = "@" + sts.getUser().getScreenName() + replies[rnd.nextInt(replies.length)] + selectItem.getDetailPageURL() ;
 
         StatusUpdate statReply = new StatusUpdate(stats);
         statReply.setInReplyToStatusId(sts.getId());
