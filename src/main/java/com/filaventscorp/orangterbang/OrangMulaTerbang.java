@@ -30,6 +30,14 @@ public class OrangMulaTerbang {
             "travel bag",
             "gift for him",
             "present for him",
+            "my husband gift",
+            "my father gift",
+            "my brother gift",
+            "my boyfriend",
+            "love husband",
+            "love my father",
+            "need backpack",
+            "work bag",
             "i want new bag"};
 
     private static String replies[] = {
