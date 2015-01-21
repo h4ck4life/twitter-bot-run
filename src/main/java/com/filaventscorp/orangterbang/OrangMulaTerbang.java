@@ -46,8 +46,8 @@ public class OrangMulaTerbang {
         itemSearchRequest.setItemPage(BigInteger.valueOf(rnd.nextInt(10)));
         foundItems = AMAZON_API.getItemSearch().call(itemSearchRequest);
         Item selectItem = foundItems.getItem().get(rnd.nextInt(10));
-        System.out.println("TITLE: " + selectItem.getItemAttributes().getTitle());
-        System.out.println("URL: " + selectItem.getDetailPageURL());
+        //System.out.println("TITLE: " + selectItem.getItemAttributes().getTitle());
+        //System.out.println("URL: " + selectItem.getDetailPageURL());
 
         // ----- TwITTER ---- //
         Query query = new Query(keywords[rnd.nextInt(keywords.length)]);
@@ -56,9 +56,12 @@ public class OrangMulaTerbang {
 
         Status sts = result.getTweets().get(rnd.nextInt(result.getTweets().size()));
         String stats = "@" + sts.getUser().getScreenName() + " Nice bag as a present for him, buy it here > " + selectItem.getDetailPageURL() ;
-        TWITTER_API.updateStatus(stats);
 
-        //System.out.println(stats);
+        StatusUpdate statReply = new StatusUpdate(stats);
+        statReply.setInReplyToStatusId(sts.getId());
+
+        TWITTER_API.updateStatus(statReply);
+
 
     }
 
