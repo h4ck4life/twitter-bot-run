@@ -39,7 +39,7 @@ public class OrangMulaTerbang {
             "i want new bag"};
 
     private static String replies[] = {
-            " make a surprise, get a nice bag as a present for him, buy it npw > ",
+            " make a surprise, get a nice bag as a present for him, buy it now > ",
             " make him happy by getting a present. He might like this > ",
             " he probably loves this nice bag > ",
             " nice leather bag for him. Make him smile. Buy it now > ",
