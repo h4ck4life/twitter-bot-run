@@ -95,6 +95,7 @@ public class OrangMulaTerbang {
         statReply.setInReplyToStatusId(sts.getId());
 
         //System.out.println(stats);
+        //System.out.println(statReply.getStatus());
         TWITTER_API.updateStatus(statReply);
 
 
