@@ -39,10 +39,11 @@ public class OrangMulaTerbang {
             "i want new bag"};
 
     private static String replies[] = {
-            " make a surprise, get a nice bag as a present for him, buy it here > ",
+            " make a surprise, get a nice bag as a present for him, buy it npw > ",
             " make him happy by getting a present. He might like this > ",
             " he probably loves this nice bag > ",
-            " nice leather bag for him. Make him smile. Buy it here > "
+            " nice leather bag for him. Make him smile. Buy it now > ",
+            " Best deal for a nice looking bag for man > "
     };
 
     public static void main(String[] args) throws IOException, TwitterException, de.malkusch.amazon.ecs.exception.RequestException, NullPointerException {
