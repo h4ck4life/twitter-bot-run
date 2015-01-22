@@ -73,7 +73,6 @@ public class OrangMulaTerbang {
         //System.out.println("TITLE: " + selectItem.getItemAttributes().getTitle());
         //System.out.println("URL: " + selectItem.getDetailPageURL());
 
-
         for (Offer offer : selectItem.getOffers().getOffer()) {
             for (OfferListing offerList : offer.getOfferListing()) {
                 //System.out.println("Price: " + offerList.getPrice().getFormattedPrice());
@@ -86,7 +85,7 @@ public class OrangMulaTerbang {
                 }
                 if(offerList.getPercentageSaved() != null) {
                     //.out.println("%" + offerList.getPercentageSaved() + " saved!");
-                    stats = "@" + sts.getUser().getScreenName() + replies[rnd.nextInt(replies.length)] + selectItem.getDetailPageURL() + " [" + offerList.getPrice().getFormattedPrice() + "]. %" + offerList.getPercentageSaved() + " SAVED!";
+                    stats = "@" + sts.getUser().getScreenName() + replies[rnd.nextInt(replies.length)] + selectItem.getDetailPageURL() + " [" + offerList.getPrice().getFormattedPrice() + "]. " + offerList.getPercentageSaved() + "% SAVED!";
                 }
                 //System.out.println("Availability: " + offerList.getAvailability());
             }
