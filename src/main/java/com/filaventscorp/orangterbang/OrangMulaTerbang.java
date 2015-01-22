@@ -1,9 +1,6 @@
 package com.filaventscorp.orangterbang;
 
-import com.ECS.client.jax.AWSECommerceService;
-import com.ECS.client.jax.Item;
-import com.ECS.client.jax.ItemSearchRequest;
-import com.ECS.client.jax.Items;
+import com.ECS.client.jax.*;
 import de.malkusch.amazon.ecs.ProductAdvertisingAPI;
 import de.malkusch.amazon.ecs.configuration.Configuration;
 import de.malkusch.amazon.ecs.configuration.PropertiesConfiguration;
@@ -24,6 +21,7 @@ public class OrangMulaTerbang {
     private static Twitter TWITTER_API;
     private static Random rnd;
     private static Items foundItems;
+    private static String stats;
     private static String keywords[] = {
             "i need bag",
             "i love him",
@@ -47,22 +45,12 @@ public class OrangMulaTerbang {
             " nice leather bag for him. Make him smile. Buy it here > "
     };
 
-    public static void main(String[] args) throws IOException, TwitterException, de.malkusch.amazon.ecs.exception.RequestException {
+    public static void main(String[] args) throws IOException, TwitterException, de.malkusch.amazon.ecs.exception.RequestException, NullPointerException {
 
         AMAZON_API = configureAmazonAPI();
         TWITTER_API = configureTwitterAuth();
         rnd = new Random();
 
-        // ---- AMAZON ------ //
-        ItemSearchRequest itemSearchRequest = new ItemSearchRequest();
-        itemSearchRequest.setSearchIndex("Luggage");
-        itemSearchRequest.setKeywords("leather men");
-        //itemSearchRequest.getResponseGroup().add("Offers");
-        itemSearchRequest.setItemPage(BigInteger.valueOf(rnd.nextInt(10)));
-        foundItems = AMAZON_API.getItemSearch().call(itemSearchRequest);
-        Item selectItem = foundItems.getItem().get(rnd.nextInt(10));
-        //System.out.println("TITLE: " + selectItem.getItemAttributes().getTitle());
-        //System.out.println("URL: " + selectItem.getDetailPageURL());
 
         // ----- TwITTER ---- //
         Query query = new Query(keywords[rnd.nextInt(keywords.length)]);
@@ -70,11 +58,43 @@ public class OrangMulaTerbang {
 
 
         Status sts = result.getTweets().get(rnd.nextInt(result.getTweets().size()));
-        String stats = "@" + sts.getUser().getScreenName() + replies[rnd.nextInt(replies.length)] + selectItem.getDetailPageURL() ;
+
+
+        // ---- AMAZON ------ //
+        ItemSearchRequest itemSearchRequest = new ItemSearchRequest();
+        itemSearchRequest.setSearchIndex("Luggage");
+        itemSearchRequest.setKeywords("leather men");
+        itemSearchRequest.getResponseGroup().add("Large");
+        itemSearchRequest.setItemPage(BigInteger.valueOf(rnd.nextInt(9)));
+        foundItems = AMAZON_API.getItemSearch().call(itemSearchRequest);
+        Item selectItem = foundItems.getItem().get(rnd.nextInt(9));
+
+        //System.out.println("TITLE: " + selectItem.getItemAttributes().getTitle());
+        //System.out.println("URL: " + selectItem.getDetailPageURL());
+
+
+        for (Offer offer : selectItem.getOffers().getOffer()) {
+            for (OfferListing offerList : offer.getOfferListing()) {
+                //System.out.println("Price: " + offerList.getPrice().getFormattedPrice());
+                stats = "@" + sts.getUser().getScreenName() + replies[rnd.nextInt(replies.length)] + selectItem.getDetailPageURL() + " [" + offerList.getPrice().getFormattedPrice() + "]";
+                if(offerList.getSalePrice() != null) {
+                    //System.out.println("Sale Price: " + offerList.getSalePrice().getFormattedPrice());
+                }
+                if(offerList.getAmountSaved() != null) {
+                    //System.out.println("Amount Saved: " + offerList.getAmountSaved().getFormattedPrice());
+                }
+                if(offerList.getPercentageSaved() != null) {
+                    //.out.println("%" + offerList.getPercentageSaved() + " saved!");
+                    stats = "@" + sts.getUser().getScreenName() + replies[rnd.nextInt(replies.length)] + selectItem.getDetailPageURL() + " [" + offerList.getPrice().getFormattedPrice() + "]. %" + offerList.getPercentageSaved() + " SAVED!";
+                }
+                //System.out.println("Availability: " + offerList.getAvailability());
+            }
+        }
 
         StatusUpdate statReply = new StatusUpdate(stats);
         statReply.setInReplyToStatusId(sts.getId());
 
+        //System.out.println(stats);
         TWITTER_API.updateStatus(statReply);
 
 
