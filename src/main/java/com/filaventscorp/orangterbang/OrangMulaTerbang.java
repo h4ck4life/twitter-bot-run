@@ -49,11 +49,7 @@ public class OrangMulaTerbang {
     };
 
     public static void main(String[] args) throws IOException, TwitterException, de.malkusch.amazon.ecs.exception.RequestException, NullPointerException {
-        try {
-            facade();
-        } catch (TwitterException e) {
-            facade();
-        }
+        facade();
     }
 
     public static void facade() throws IOException, TwitterException, de.malkusch.amazon.ecs.exception.RequestException, NullPointerException {
