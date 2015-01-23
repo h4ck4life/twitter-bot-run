@@ -108,7 +108,7 @@ public class OrangMulaTerbang {
         for (Offer offer : selectItem.getOffers().getOffer()) {
             for (OfferListing offerList : offer.getOfferListing()) {
                 //System.out.println("Price: " + offerList.getPrice().getFormattedPrice());
-                stats = "@" + sts.getUser().getScreenName() + replies[rnd.nextInt(replies.length)] + selectItem.getDetailPageURL() + " ONLY " + offerList.getPrice().getFormattedPrice() + " Please RT. TQ. " + trendingTags;
+                stats = "@" + sts.getUser().getScreenName() + replies[rnd.nextInt(replies.length)] + selectItem.getDetailPageURL() + " ONLY " + offerList.getPrice().getFormattedPrice() + " - Please RT. TQ. " + trendingTags;
                 if (offerList.getSalePrice() != null) {
                     //System.out.println("Sale Price: " + offerList.getSalePrice().getFormattedPrice());
                 }
@@ -117,7 +117,7 @@ public class OrangMulaTerbang {
                 }
                 if (offerList.getPercentageSaved() != null) {
                     //.out.println("%" + offerList.getPercentageSaved() + " saved!");
-                    stats = "@" + sts.getUser().getScreenName() + replies[rnd.nextInt(replies.length)] + selectItem.getDetailPageURL() + " ONLY " + offerList.getPrice().getFormattedPrice() + " [" + offerList.getPercentageSaved() + "% SAVED!] Please RT. TQ. " + trendingTags;
+                    stats = "@" + sts.getUser().getScreenName() + replies[rnd.nextInt(replies.length)] + selectItem.getDetailPageURL() + " ONLY " + offerList.getPrice().getFormattedPrice() + " [" + offerList.getPercentageSaved() + "% SAVED!] - Please RT. TQ. " + trendingTags;
                 }
                 //System.out.println("Availability: " + offerList.getAvailability());
             }
