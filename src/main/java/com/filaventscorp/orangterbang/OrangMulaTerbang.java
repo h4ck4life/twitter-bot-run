@@ -105,7 +105,7 @@ public class OrangMulaTerbang {
         itemSearchRequest.setSearchIndex("Luggage");
         itemSearchRequest.setKeywords("leather men");
         itemSearchRequest.getResponseGroup().add("Large");
-        itemSearchRequest.setItemPage(BigInteger.valueOf(rnd.nextInt(9)));
+        itemSearchRequest.setItemPage(BigInteger.valueOf(rnd.nextInt(9) + 1));
         foundItems = AMAZON_API.getItemSearch().call(itemSearchRequest);
         Item selectItem = foundItems.getItem().get(rnd.nextInt(9));
 
