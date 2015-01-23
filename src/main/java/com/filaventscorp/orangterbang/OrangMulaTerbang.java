@@ -10,6 +10,7 @@ import twitter4j.conf.ConfigurationBuilder;
 
 import java.io.IOException;
 import java.math.BigInteger;
+import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 
@@ -66,7 +67,17 @@ public class OrangMulaTerbang {
         QueryResult result = TWITTER_API.search(query);
 
         // Get new Tweets collection from search
-        Status sts = result.getTweets().get(rnd.nextInt(result.getTweets().size()));
+        //Status sts = result.getTweets().get(rnd.nextInt(result.getTweets().size()));
+        Status sts = null;
+        List<Status> allusers = result.getTweets();
+        int biggestUser = 0;
+        for (Status usersts : allusers) {
+            if (usersts.getUser().getFollowersCount() > biggestUser) {
+                sts = usersts;
+                biggestUser = usersts.getUser().getFollowersCount();
+            }
+        }
+
         favoritesAllMentions();
         getRandomProductsFromAmazon(sts, getTrendingTags());
         tweetRandomProductToUser(sts);
