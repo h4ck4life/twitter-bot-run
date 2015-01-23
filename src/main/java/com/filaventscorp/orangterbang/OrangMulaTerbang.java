@@ -43,7 +43,7 @@ public class OrangMulaTerbang {
             " make a surprise, get a nice bag for someone you love > ",
             " make someone happy. The person might like this > ",
             " you probably love this nice bag > ",
-            " nice leather bag for him. Make someone smile > ",
+            " nice leather bag as a gift. Make someone smile > ",
             " Best deal for a nice looking bag > "
     };
 
