@@ -80,13 +80,15 @@ public class OrangMulaTerbang {
     }
 
     public static String getTrendingTags() throws TwitterException {
+        String trendx = "";
         Trends trends = TWITTER_API.getPlaceTrends(23424977);
         Trend[] trend = trends.getTrends();
-        /*for (int i = 0; i < trend.length; i++) {
-            trend[i].getName();
-            System.out.println(trend[i].getName());
-        }*/
-        return trend[0].getName();
+        for (int i = 0; i < trend.length; i++) {
+            if (trend[i].getName().contains("#")) {
+                trendx = trend[i].getName();
+            }
+        }
+        return trendx;
     }
 
     public static void tweetRandomProductToUser(Status sts) throws TwitterException {
@@ -115,7 +117,7 @@ public class OrangMulaTerbang {
         for (Offer offer : selectItem.getOffers().getOffer()) {
             for (OfferListing offerList : offer.getOfferListing()) {
                 //System.out.println("Price: " + offerList.getPrice().getFormattedPrice());
-                stats = "@" + sts.getUser().getScreenName() + replies[rnd.nextInt(replies.length)] + selectItem.getDetailPageURL() + " ONLY " + offerList.getPrice().getFormattedPrice() + " - Please RT. TQ. " + trendingTags;
+                stats = "@" + sts.getUser().getScreenName() + replies[rnd.nextInt(replies.length)] + selectItem.getDetailPageURL() + " ONLY [" + offerList.getPrice().getFormattedPrice() + "] - Please RT. " + trendingTags;
                 if (offerList.getSalePrice() != null) {
                     //System.out.println("Sale Price: " + offerList.getSalePrice().getFormattedPrice());
                 }
@@ -124,7 +126,7 @@ public class OrangMulaTerbang {
                 }
                 if (offerList.getPercentageSaved() != null) {
                     //.out.println("%" + offerList.getPercentageSaved() + " saved!");
-                    stats = "@" + sts.getUser().getScreenName() + replies[rnd.nextInt(replies.length)] + selectItem.getDetailPageURL() + " ONLY " + offerList.getPrice().getFormattedPrice() + " [" + offerList.getPercentageSaved() + "% SAVED!] - Please RT. TQ. " + trendingTags;
+                    stats = "@" + sts.getUser().getScreenName() + replies[rnd.nextInt(replies.length)] + selectItem.getDetailPageURL() + " ONLY [" + offerList.getPrice().getFormattedPrice() + "] [" + offerList.getPercentageSaved() + "% SAVED!] - Please RT. " + trendingTags;
                 }
                 //System.out.println("Availability: " + offerList.getAvailability());
             }
