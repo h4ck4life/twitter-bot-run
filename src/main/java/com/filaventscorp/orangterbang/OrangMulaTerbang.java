@@ -147,10 +147,10 @@ public class OrangMulaTerbang {
     public static Twitter configureTwitterAuth() {
         ConfigurationBuilder cb = new ConfigurationBuilder();
         cb.setDebugEnabled(true)
-                .setOAuthConsumerKey("yPwCnQGRBFvYDU9jLeYjk5alr")
-                .setOAuthConsumerSecret("IXjKzMa8FDTQifyxzpZojwMaAIzRdfJ567QXbW1jNKehP97jqY")
-                .setOAuthAccessToken("2989825245-vQAkBvSYLox8QyxtZ1fBc2I2JLvpyEnTMt5Nwmm")
-                .setOAuthAccessTokenSecret("Sus3N6uImWHvfLtjC9CRmUZr5CnMkBlOIJpFFukUKVwf0");
+                .setOAuthConsumerKey("**********")
+                .setOAuthConsumerSecret("*********")
+                .setOAuthAccessToken("*********")
+                .setOAuthAccessTokenSecret("*********");
         TwitterFactory tf = new TwitterFactory(cb.build());
         return tf.getInstance();
     }
