@@ -19,6 +19,6 @@ Please contact me for further inquiries or customization if needed:
 
 Twitter - [@h4ck4life](https://twitter.com/h4ck4life)
 
-Email - [alifaziz@gmail.com](alifaziz@gmail.com)
+Email - alifaziz@gmail.com
 
 Enjoy & Thanks!
