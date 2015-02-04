@@ -13,7 +13,7 @@ How to use:
 6. Run 'mvn clean install'
 7. Compile and run 'OrangTerbang'
 
-Warning: Please make the bot interval at least 30 minutes or more. Otherwise Twitter will probably block your API.
+Warning: If you use linux cron, please make sure the bot interval at least 30 minutes or more. Otherwise Twitter will probably block your API.
 
 Please contact me for further inquiries or customization if needed:
 
